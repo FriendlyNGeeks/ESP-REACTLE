@@ -14,7 +14,7 @@ class ESP_Mdns():
             try:
                 self.server.advertise_service(service_type="_http", protocol="_tcp", port=self.port)
                 print("mDNS | SUCCESS")
-                print(f"mDNS hostname: {self.server.hostname}.{self.port}")
+                print(f"mDNS hostname: http://{self.server.hostname}:{self.port}")
             except Exception as e:
                 print(f"Error enabling mDNS: {e}")
         else:

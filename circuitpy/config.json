@@ -4,6 +4,7 @@
         "SSID": "MY_HOME-2_4G",
         "PASS": "pa$$w0rd",
         "HOST": "REACTLE-32",
+        "PORT": 80,
         "WPA": true
     },
     "AP":{

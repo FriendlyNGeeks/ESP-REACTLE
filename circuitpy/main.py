@@ -19,11 +19,12 @@ def load_config(file):
 # MAIN
 def main():
     config = load_config(CONFIG_FILE)
+    espWifi = ESP_Wifi(config)
     # Connect to WiFi or start an access point
     if config["MODE"] == "WIFI":
-        ESP_Wifi.init_wifi(config)
+        espWifi.init_wifi()
     elif config["MODE"] == "AP":
-        ESP_Wifi.adhoc_ap(config)
+        espWifi.adhoc_ap()
     if radio.connected:
         esp_server = ESPServer(config)
         esp_server.start()

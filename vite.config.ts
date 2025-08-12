@@ -27,6 +27,9 @@ export default defineConfig({
           if (id.includes('src/data/')) {
             return 'data'; // Split data into their own chunk
           }
+          if (id.includes('src/favicon.svg')) {
+            return 'favicon'; // Split vendor libraries
+          }
         },
       },
     },
@@ -40,7 +43,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/api": "http://my-esp32.local",
+      "/api": "http://esp-reactle.local",
     },
   },
 });
