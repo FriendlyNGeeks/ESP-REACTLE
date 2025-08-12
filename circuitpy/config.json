@@ -1,0 +1,19 @@
+{
+    "MODE": "WIFI",
+    "WIFI":{
+        "SSID": "MY_HOME-2_4G",
+        "PASS": "pa$$w0rd",
+        "HOST": "REACTLE-32",
+        "WPA": true
+    },
+    "AP":{
+        "SSID": "SLICE_OF_PI",
+        "PASS": "pa$$w0rd",
+        "WPA": false
+    },
+    "MDNS":{
+        "ENABLE": true,
+        "HOST": "REACTLE-32",
+        "PORT": 80
+    }
+}
