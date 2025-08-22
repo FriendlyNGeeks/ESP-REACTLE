@@ -25,11 +25,6 @@ class ESPServer:
             # Streams /_www/index.html with proper content-type
             return FileResponse(request, "/index.html")
 
-        @self.server.route("/assets/<path:path>", GET)
-        def static_files(request: Request, path: str):
-            # Streams files under /_www/static/
-            return FileResponse(request, f"/static/{path}")
-
         @self.server.route("/api", GET)
         def api_route(request: Request):
             print(f"API request from {request.client_address}")
