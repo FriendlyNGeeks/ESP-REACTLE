@@ -31,7 +31,8 @@ export const Game = () => {
 
     // Keep WebSocket connection open while page is loaded
     useEffect(() => {
-        const wsUrl = `ws://${window.location.hostname}/ws`;
+        const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
+        const wsUrl = `${wsProtocol}://${window.location.hostname}/ws`;
         const ws = new WebSocket(wsUrl);
         wsRef.current = ws;
 
