@@ -20,7 +20,7 @@ class ESP_Wifi:
             ESP_Wifi.adhoc_ap(self.config)
 
     def adhoc_ap(self):
-        wifi.radio.hostname = config["WIFI"]["HOST"]
+        wifi.radio.hostname = self.config["WIFI"]["HOST"]
         if self.config["AP"]["WPA"] == True:
             print(f"Starting Ad-Hoc(AP): {self.config['AP']['SSID']}")
             wifi.radio.start_ap(self.config["AP"]["SSID"], self.config["AP"]["PASS"])
