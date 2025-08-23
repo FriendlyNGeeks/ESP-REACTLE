@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef } from "preact/hooks";
-import { Wordle } from "./_index";
-import { dictionary } from "../data/dictionary";
+import { dictionary } from "../../../data/dictionary";
 
-export const Game = () => {
+export const Battleship = () => {
     const [solution, setSolution] = useState("");
     const [words, setWords] = useState([]);
     const [wordHistory, setWordHistory] = useState([]);
@@ -71,7 +70,6 @@ export const Game = () => {
             <div style={{ marginBottom: '1em' }}>
                 <strong>ESP32-S3 WebSocket:</strong> {connectionStatus}
             </div>
-            <Wordle solution={solution} words={words} resetGame={resetGame} />
         </div>
     );
 };

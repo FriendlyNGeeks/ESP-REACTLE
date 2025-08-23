@@ -1,0 +1,1 @@
+export { Battleship } from "./Game";

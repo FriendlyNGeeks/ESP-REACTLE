@@ -1,10 +1,8 @@
 import { useEffect, useState } from "preact/hooks";
-import useWordle from "../hooks/useWordle";
+import useWordle from "../../../hooks/useWordle";
 import { Grid, Keypad, Modal } from "./_index";
-// import { useNavigate } from "react-router-dom";
 import { useLocation } from "wouter";
-import letters from "../data/letters";
-import { Fragment } from 'preact';
+import letters from "../../../data/letters";
 
 export const Wordle = ({ words, solution, resetGame }) => {
     const {
@@ -40,7 +38,6 @@ export const Wordle = ({ words, solution, resetGame }) => {
     };
 
     return(
-    <>
         <div className="main">
             <div className="moves">Moves: {turn}/6</div>
             <Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
@@ -68,7 +65,6 @@ export const Wordle = ({ words, solution, resetGame }) => {
                 />
             )}
         </div>
-    </>
     );
 };
 

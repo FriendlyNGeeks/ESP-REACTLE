@@ -6,9 +6,12 @@ export const Header = () => (
         <div className="container">
             <div className="credits">
                 <h2>
-                    Reactle - Wordle Clone for ESP32 Circuit Python
+                    3M Tabletop - Mini Multiplayer Madness
                 </h2>
             </div>
+            <button>
+                <a href="/">Dashboard</a>
+            </button>
         </div>
     </header>
     </> 

@@ -1,0 +1,1 @@
+export { Tic_Tac_Toe } from "./Game";

@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { dictionary } from "../data/dictionary";
+import { dictionary } from "../../../data/dictionary";
 import { Fragment } from 'preact';
 
 export const Modal = ({
