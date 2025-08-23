@@ -63,23 +63,27 @@ export const Dots_And_Boxes = () => {
             }
         };
 
-            // Render the board with dots, lines, and boxes (with ownership and player switching)
+            // Render the board as a true Dots and Boxes grid
             return (
-                <div className="max-w-lg mx-auto mt-8 p-4 bg-white rounded shadow">
+                <div className="max-w-4xl mx-auto mt-8 p-4 bg-white rounded shadow overflow-auto">
                     <h2 className="text-xl font-bold mb-2">Dots and Boxes</h2>
                     <div className="mb-2">Player 1: {gameState.scores[1]} | Player 2: {gameState.scores[2]}</div>
                     <div className="mb-2">Current Player: <span className={gameState.currentPlayer === 1 ? 'text-blue-700' : 'text-green-700'}>Player {gameState.currentPlayer}</span></div>
-                    <div className="inline-block">
-                        <table className="border-spacing-0 select-none">
-                            <tbody>
-                                {Array.from({ length: BOARD_SIZE }).map((_, row) => (
-                                    <tr key={row}>
-                                        {Array.from({ length: BOARD_SIZE }).map((_, col) => (
-                                            <td key={col} style={{ padding: 0 }}>
-                                                {/* Dot */}
-                                                <div className="w-3 h-3 bg-black rounded-full inline-block align-middle" />
-                                                {/* Horizontal line (except last col) */}
-                                                {col < BOARD_SIZE - 1 && row < BOARD_SIZE && (
+                    <table className="border-spacing-0 select-none">
+                        <tbody>
+                            {Array.from({ length: BOARD_SIZE * 2 - 1 }).map((_, r) => (
+                                <tr key={r}>
+                                    {Array.from({ length: BOARD_SIZE * 2 - 1 }).map((_, c) => {
+                                        // Even row, even col: Dot
+                                        if (r % 2 === 0 && c % 2 === 0) {
+                                            return <td key={c}><div className="w-3 h-3 bg-black rounded-full inline-block align-middle" /></td>;
+                                        }
+                                        // Even row, odd col: Horizontal line
+                                        if (r % 2 === 0 && c % 2 === 1) {
+                                            const row = r / 2, col = (c - 1) / 2;
+                                            if (col >= BOARD_SIZE - 1) return <td key={c}></td>;
+                                            return (
+                                                <td key={c} style={{ padding: 0 }}>
                                                     <button
                                                         className={`inline-block align-middle w-10 h-2 mx-1 rounded transition-colors
                                                             ${((gameState.board[row] && gameState.board[row][col]) ? gameState.board[row][col][0] : 0) === 0 ? 'bg-gray-200 hover:bg-blue-300' :
@@ -89,18 +93,15 @@ export const Dots_And_Boxes = () => {
                                                         title={`Draw horizontal line at (${row},${col})`}
                                                         onClick={() => sendMove({ player: gameState.currentPlayer, row, col, orientation: "h" })}
                                                     />
-                                                )}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))}
-                                {/* Render vertical lines and boxes */}
-                                {Array.from({ length: BOARD_SIZE - 1 }).map((_, row) => (
-                                    <tr key={`v-${row}`}> 
-                                        {Array.from({ length: BOARD_SIZE }).map((_, col) => (
-                                            <td key={col} style={{ padding: 0 }}>
-                                                {/* Vertical line (except last row) */}
-                                                {col < BOARD_SIZE && row < BOARD_SIZE - 1 && (
+                                                </td>
+                                            );
+                                        }
+                                        // Odd row, even col: Vertical line
+                                        if (r % 2 === 1 && c % 2 === 0) {
+                                            const row = (r - 1) / 2, col = c / 2;
+                                            if (row >= BOARD_SIZE - 1) return <td key={c}></td>;
+                                            return (
+                                                <td key={c} style={{ padding: 0 }}>
                                                     <button
                                                         className={`block w-2 h-10 my-1 rounded transition-colors
                                                             ${((gameState.board[row] && gameState.board[row][col]) ? gameState.board[row][col][1] : 0) === 0 ? 'bg-gray-200 hover:bg-blue-300' :
@@ -110,23 +111,30 @@ export const Dots_And_Boxes = () => {
                                                         title={`Draw vertical line at (${row},${col})`}
                                                         onClick={() => sendMove({ player: gameState.currentPlayer, row, col, orientation: "v" })}
                                                     />
-                                                )}
-                                                {/* Box (if not last col/row) */}
-                                                {col < BOARD_SIZE - 1 && row < BOARD_SIZE - 1 && (
+                                                </td>
+                                            );
+                                        }
+                                        // Odd row, odd col: Box
+                                        if (r % 2 === 1 && c % 2 === 1) {
+                                            const row = (r - 1) / 2, col = (c - 1) / 2;
+                                            if (row >= BOARD_SIZE - 1 || col >= BOARD_SIZE - 1) return <td key={c}></td>;
+                                            return (
+                                                <td key={c} style={{ padding: 0 }}>
                                                     <div className={`w-10 h-10 inline-flex items-center justify-center rounded text-lg font-bold
                                                         ${((gameState.boxes[row] && gameState.boxes[row][col]) ? gameState.boxes[row][col] : 0) === 1 ? 'bg-blue-200 text-blue-800' :
                                                             ((gameState.boxes[row] && gameState.boxes[row][col]) ? gameState.boxes[row][col] : 0) === 2 ? 'bg-green-200 text-green-800' : ''}
                                                     `}>
                                                         {((gameState.boxes[row] && gameState.boxes[row][col]) ? gameState.boxes[row][col] : 0) === 1 ? '1' : ((gameState.boxes[row] && gameState.boxes[row][col]) ? gameState.boxes[row][col] : 0) === 2 ? '2' : ''}
                                                     </div>
-                                                )}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                                                </td>
+                                            );
+                                        }
+                                        return <td key={c}></td>;
+                                    })}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                     {gameState.winner && (
                         <div className="mt-4 text-xl font-bold text-center text-purple-700">
                             Winner: Player {gameState.winner}
