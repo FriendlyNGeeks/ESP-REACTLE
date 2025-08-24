@@ -18,7 +18,7 @@ const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
 const wsUrl = `${wsProtocol}://${window.location.hostname}/ws`;
 const WS_URLS = {
   'dots-and-boxes': `${wsProtocol}://${window.location.hostname}/ws/dots-and-boxes`,
-  // 'battleship': `${wsProtocol}://${window.location.hostname}/ws/battleship`,
+  'battleship': `${wsProtocol}://${window.location.hostname}/ws/battleship`,
   // 'tic-tac-toe': `${wsProtocol}://${window.location.hostname}/ws/tic-tac-toe`,
 };
 

@@ -32,7 +32,7 @@ export const Reactle = () => {
     // Keep WebSocket connection open while page is loaded
     useEffect(() => {
         const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
-        const wsUrl = `${wsProtocol}://${window.location.hostname}/ws`;
+        const wsUrl = `${wsProtocol}://${window.location.hostname}/ws/reactle`;
         const ws = new WebSocket(wsUrl);
         wsRef.current = ws;
 

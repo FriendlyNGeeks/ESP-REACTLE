@@ -1,10 +1,10 @@
-# dots_and_boxes.py
+# battleship.py
 # CircuitPython + adafruit_httpserver.Websocket
 # Robust Dots & Boxes manager with deferred initial send and safe polling.
 
 import json
 
-class DotsAndBoxesGame:
+class Battleship:
     # Live sockets + sockets that need their first state send on next poll
     ws_clients = set()
     ws_needs_init = set()
@@ -26,7 +26,7 @@ class DotsAndBoxesGame:
     @classmethod
     def _get_instance(cls):
         if cls._instance is None:
-            cls._instance = DotsAndBoxesGame()
+            cls._instance = Battleship()
         return cls._instance
 
     # ---------- websocket lifecycle ----------
@@ -45,10 +45,8 @@ class DotsAndBoxesGame:
     def on_disconnect(cls, ws):
         if ws in cls.ws_clients:
             cls.ws_clients.discard(ws)
-            print("Client Disconnected:", ws.client_address)
         if ws in cls.ws_needs_init:
             cls.ws_needs_init.discard(ws)
-            print("Client Disconnected:", ws.client_address)
 
     # ---------- main poll loop ----------
     @classmethod
@@ -253,4 +251,3 @@ class DotsAndBoxesGame:
             except Exception:
                 pass
             self.ws_clients.discard(ws)
-            print("Client Disconnected:", ws.client_address)
