@@ -11,9 +11,10 @@ export default defineConfig({
     polyfillModulePreload: false,
     rollupOptions: {
       output: {
-        assetFileNames: 'static/[name].[hash][extname]',
-        chunkFileNames: 'static/[name].[hash].js',
-        entryFileNames: 'static/[name].[hash].js',
+        // Uncomment the following lines to customize the output file names [default is assets/[name]-[hash][extname]]
+        // assetFileNames: 'static/[name].[hash][extname]',
+        // chunkFileNames: 'static/[name].[hash].js',
+        // entryFileNames: 'static/[name].[hash].js',
         // This is used to split the code into chunks
         manualChunks(id:any) {
           if (id.includes('node_modules')) {

@@ -4,7 +4,7 @@
 
 import json
 
-class DotsAndBoxesGame:
+class DotsAndBoxes:
     # Live sockets + sockets that need their first state send on next poll
     ws_clients = set()
     ws_needs_init = set()
@@ -26,7 +26,7 @@ class DotsAndBoxesGame:
     @classmethod
     def _get_instance(cls):
         if cls._instance is None:
-            cls._instance = DotsAndBoxesGame()
+            cls._instance = DotsAndBoxes()
         return cls._instance
 
     # ---------- websocket lifecycle ----------
@@ -45,10 +45,10 @@ class DotsAndBoxesGame:
     def on_disconnect(cls, ws):
         if ws in cls.ws_clients:
             cls.ws_clients.discard(ws)
-            print("Client Disconnected:", ws.client_address)
+            print("Client Disconnected:", ws)
         if ws in cls.ws_needs_init:
             cls.ws_needs_init.discard(ws)
-            print("Client Disconnected:", ws.client_address)
+            print("Client Disconnected:", ws)
 
     # ---------- main poll loop ----------
     @classmethod

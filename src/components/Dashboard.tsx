@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
 
 interface PlayerCounts {
-  'dots-and-boxes': number;
   'battleship': number;
+  'dots-and-boxes': number;
+  'rock-paper-scissors': number;
   'tic-tac-toe': number;
 }
 
 const initialCounts: PlayerCounts = {
-  'dots-and-boxes': 0,
   'battleship': 0,
+  'dots-and-boxes': 0,
+  'rock-paper-scissors': 0,
   'tic-tac-toe': 0,
 };
 
 
 // WebSocket URLs for each game (replace with your ESP32-S3 WebSocket endpoints)
 const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
-const wsUrl = `${wsProtocol}://${window.location.hostname}/ws`;
 const WS_URLS = {
-  'dots-and-boxes': `${wsProtocol}://${window.location.hostname}/ws/dots-and-boxes`,
   'battleship': `${wsProtocol}://${window.location.hostname}/ws/battleship`,
-  // 'tic-tac-toe': `${wsProtocol}://${window.location.hostname}/ws/tic-tac-toe`,
+  'dots-and-boxes': `${wsProtocol}://${window.location.hostname}/ws/dots-and-boxes`,
+  'rock-paper-scissors': `${wsProtocol}://${window.location.hostname}/ws/rock-paper-scissors`,
+  'tic-tac-toe': `${wsProtocol}://${window.location.hostname}/ws/tic-tac-toe`,
 };
 
 export const Dashboard = () => {
@@ -73,6 +75,15 @@ export const Dashboard = () => {
       <ul className="space-y-4">
         <li>
           <a
+            href="/battleship"
+            className="flex items-center justify-between px-4 py-3 rounded-lg bg-green-100 hover:bg-green-200 transition-colors text-green-800 font-semibold shadow-sm"
+          >
+            <span>Battleship</span>
+            <span className="text-lg font-bold">{counts['battleship']}</span>
+          </a>
+        </li>
+        <li>
+          <a
             href="/dots-and-boxes"
             className="flex items-center justify-between px-4 py-3 rounded-lg bg-blue-100 hover:bg-blue-200 transition-colors text-blue-800 font-semibold shadow-sm"
           >
@@ -82,11 +93,11 @@ export const Dashboard = () => {
         </li>
         <li>
           <a
-            href="/battleship"
+            href="/rock-paper-scissors"
             className="flex items-center justify-between px-4 py-3 rounded-lg bg-green-100 hover:bg-green-200 transition-colors text-green-800 font-semibold shadow-sm"
           >
-            <span>Battleship</span>
-            <span className="text-lg font-bold">{counts['battleship']}</span>
+            <span>Rock-Paper-Scissors</span>
+            <span className="text-lg font-bold">{counts['rock-paper-scissors']}</span>
           </a>
         </li>
         <li>

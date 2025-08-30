@@ -1,0 +1,1 @@
+export { Rock_Paper_Scissors } from "./Game";

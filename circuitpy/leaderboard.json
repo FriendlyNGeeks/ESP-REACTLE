@@ -1,0 +1,87 @@
+{
+    "BATTLESHIP":{
+        "PLAYED":{},
+        "LEADERS":{
+            "1":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "2":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "3":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            }
+        }
+    },
+    "DOTS-AND-BOXES":{
+        "PLAYED":{},
+        "LEADERS":{
+            "1":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "2":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "3":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            }
+        }
+    },
+    "TIC-TAC":{
+        "PLAYED":{},
+        "LEADERS":{
+            "1":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "2":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "3":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            }
+        }
+    },
+    "R-P-S":{
+        "PLAYED":{},
+        "LEADERS":{
+            "1":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "2":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "3":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            }
+        }
+    },
+    "WORDLE":{
+        "PLAYED":{},
+        "LEADERS":{
+            "1":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "2":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            },
+            "3":{
+                "INITALS":"ALL890",
+                "SCORE": 0
+            }
+        }
+    }
+}
